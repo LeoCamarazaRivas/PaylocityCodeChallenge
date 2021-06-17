@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "vpV3QEdbcSuN4xUAHETbAmx0SjpJWFxVunP/VSdkaFmYtCKg+Avbj8SSEdnWTzNBUtNFdED7+i3EmR3bUJ/SBQ==",
+  "success": true,
+  "projectFilePath": "E:\\03-Repos\\PaylocityCodeChallenge\\PaylocityCodeChallenge\\Paylocity.DAL\\Paylocity.DAL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Leo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
