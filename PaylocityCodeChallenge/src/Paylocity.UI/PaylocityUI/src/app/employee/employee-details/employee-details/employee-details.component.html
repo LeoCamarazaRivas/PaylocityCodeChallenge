@@ -1,5 +1,10 @@
-<div fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center" style="margin-top: 5%;">
   <h1>Employee(s) Information</h1>
+  <div *ngIf="!employees">
+    <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">
+      Please add an employee
+    </p>
+  </div>
 
   <table mat-table [dataSource]="employees" class="table-striped mat-elevation-z8" [hidden]="!employees">
     <!-- Name Column -->
@@ -27,7 +32,7 @@
     <!-- Deduction Column -->
     <ng-container matColumnDef="deduction">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Deduction</th>
-      <td mat-cell *matCellDef="let employee">{{ employee.deduction.toFixed(4) }}</td>
+      <td mat-cell *matCellDef="let employee">{{ deductionFormat }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

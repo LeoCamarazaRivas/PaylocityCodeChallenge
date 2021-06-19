@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Paylocity.DAL.Data;
+using Paylocity.DAL.Data.Model;
 using Paylocity.DAL.Repository;
 using System;
 using System.Collections.Generic;

@@ -9,7 +9,7 @@ import { Dependent } from '../shared/dependent.model';
 // }
 
 export class Employee {
-  public employeeId?:number;
+  public deduction!:number;
   public firstName: string;
   public lastName: string;
   public dependents: Dependent[];

@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Paylocity.DAL.Data;
 using Paylocity.DAL.Repository;
 
 namespace Paylocity.UI
@@ -21,18 +22,21 @@ namespace Paylocity.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IDeductionRepo, DeductionRepo>();
-
             services.AddControllersWithViews()
                     .AddJsonOptions(opions =>
                     {
                         opions.JsonSerializerOptions.WriteIndented = true;
-                    });
-            
+                    });           
+
+            services.AddTransient<IDeductionRepo, DeductionRepo>();
+            // Add PaylocityDbContext and SQL Server support
+            services.AddDbContext<PaylocityDbContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("PaylocityCodingChallengeConnection")));
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "PaylocityUI/dist";
-            });
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
