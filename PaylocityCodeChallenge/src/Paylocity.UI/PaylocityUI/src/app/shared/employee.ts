@@ -9,14 +9,15 @@ import { Dependent } from '../shared/dependent.model';
 // }
 
 export class Employee {
-  public deduction!:number;
-  public firstName: string;
-  public lastName: string;
-  public dependents: Dependent[];
+  id?: number;
+  name: string;
+  lastname: string;
+  deduction?: number;
+  dependents: Dependent[];
 
-  constructor(firstName: string, lastName: string, dependents: Dependent[]){
-    this.firstName = firstName;
-    this.lastName = lastName;
+  constructor(name: string, lastname: string, dependents: Dependent[]){
+    this.name = name;
+    this.lastname = lastname;
     this.dependents = dependents;
   }
 }

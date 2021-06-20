@@ -7,8 +7,8 @@
           <mat-expansion-panel-header>
             <!-- <mat-panel-title>Employee Data</mat-panel-title> -->
             <mat-panel-description class="text-center">
-              Type name, last name and dependents
-              <mat-icon>account_circle</mat-icon>
+              Please enter the Employee name, last name, and (his/her) dependents.
+              <!--<mat-icon>account_circle</mat-icon>-->
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -17,30 +17,28 @@
               <div [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="row">
                   <div class="col-6">
-                    <div class="form-group">
-                      <label for="firstName">Employee Name</label>
-                      <input type="text" id="firstName" class="form-control w-auto" formControlName="firstName"
-                        placeholder="Enter employee name...">
+                    <div class="form-group">                      
+                      <label for="firstName">Employee Name:</label>
+                      <input type="text" id="firstName" class="form-control w-auto" formControlName="name" required>
                       <!-- Employee name validation -->
-                      <span class="invalid-feedback" *ngIf="form.hasError('firstName')">
-                        <span *ngIf="form.get('firstName')?.errors?.required">
+                      <div *ngIf="form.hasError('name')" class="invalid-feedback">
+                        <div *ngIf="form.get('name').errors?.required">
                           Name is required
-                        </span>
-                      </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="lastName">Employee Last name</label>
-                      <input type="text" id="lastName" class="form-control w-auto" formControlName="lastName"
-                        placeholder="Enter employee lastName...">
+                      <label for="lastName">Employee Last name:</label>
+                      <input type="text" id="lastName" class="form-control w-auto" formControlName="lastname" required>
                       <!-- Employee lastName validation -->
-                      <span class="invalid-feedback" *ngIf="form.hasError('lastName')">
-                        <span *ngIf="form.get('lastName')?.errors?.required">
+                      <div class="invalid-feedback" *ngIf="form.hasError('lastname')">
+                        <div *ngIf="form.get('lastname').errors?.required">
                           Name is required
-                        </span>
-                      </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -59,20 +57,20 @@
                       <div class="col-3 mx-4">
                         <label for="dependentName">Dependent Name</label>
                         <input type="text" id="dependentName" class="form-control w-auto"
-                          formControlName="firstName" placeholder="Enter dependent name...">
+                          formControlName="name" placeholder="Enter dependent name...">
                       </div>
 
                       <div class="col-3 mx-4">
                         <label for="dependentlastName">Dependent Last name</label>
                         <input type="text" id="dependentlastName" class="form-control w-auto"
-                          formControlName="lastName" placeholder="Enter dependent lastName...">
+                          formControlName="lastname" placeholder="Enter dependent lastName...">
                       </div>
 
                       <div class="col-3 mx-4">
                         <label for="dependentRelationship">Dependent Relationship</label>
                         <!-- <input type="text" id="dependentRelationship" class="form-control w-auto"
                           formControlName="dependentRelationship" placeholder="Enter dependent lastName..."> -->
-                          <select formControlName="relationship" id="dependentRelationship" class="form-select">
+                          <select formControlName="relationshipWithEmployee" id="dependentRelationship" class="form-select">
                             <option value="child">Child</option>
                             <option value="husband">Husband</option>
                             <option value="wife">Wife</option>
@@ -86,7 +84,7 @@
                   <button type="submit" (click)="onSubmit()" class="btn btn-success" [disabled]="form.invalid">
                     Calculate
                   </button>
-                  <button type="submit" class="btn">
+                  <button type="button" class="btn" (click)="onCancel()">
                     Cancel
                   </button>
                 </div>

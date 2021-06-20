@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details/employee-details.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinners/loading-spinner.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
     HeaderComponent,
     HomeComponent,
     EmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),

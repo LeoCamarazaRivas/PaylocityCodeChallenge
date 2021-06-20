@@ -31,19 +31,16 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.form = new FormGroup({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      paycheck: new FormControl(2000, Validators.pattern(/^-?(0|[1-9]\d*)?$/)),
+      name: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),      
       dependents: new FormArray([])
     });
   }
 
-  onSubmit(){
-    let employeeId = this.getRandomId(100);
-    let employeeName = this.form.get('firstName')?.value;
-    let employeeLastname = this.form.get('lastName')?.value;
+  onSubmit(){    
+    let employeeName = this.form.get('name')?.value;
+    let employeeLastname = this.form.get('lastname')?.value;
     let dependentEmployee: Dependent[] = this.form.get('dependents')?.value;
     this.employee = new Employee(
       employeeName,
@@ -66,11 +63,16 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
   onAddDependents() {
     (<FormArray>this.form.get('dependents')).push(
       new FormGroup({
-        firstName: new FormControl(null),
-        lastName: new FormControl(null),
-        relationship: new FormControl(null),
+        name: new FormControl('', Validators.required),
+        lastname: new FormControl('', Validators.required),
+        relationshipWithEmployee: new FormControl('', Validators.required),
       })
     )
+  }
+
+  onCancel() {
+    this.form.reset();
+    (<FormArray>this.form.get('dependents')).clear();
   }
 
   get controls() {

@@ -24,33 +24,42 @@ namespace Paylocity.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Employee>> GetEmployees()
+        public ActionResult<List<Employee>> GetEmployees()
         {
             List<Employee> employees = new List<Employee>();
-            var response = await _repo.GetEmployeeAsync();
+            var response = _repo.GetEmployees();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var employeeResponse = response.Content.ReadAsStringAsync().Result;
-                employees = JsonConvert.DeserializeObject<List<Employee>>(employeeResponse);
-            }
-
-            return employees;
+            return Ok(response);
 
         }
 
-        [HttpPost]
-        public async Task<bool> Post(Employee employee)
+        [HttpGet("{id}", Name = "GetEmployeeById")]
+        public ActionResult<Employee> GetEmployeeById(int id)
         {
-            bool flag = false;
+            var employeeItem = _repo.GetEmployeeById(id);
+            if (employeeItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(employeeItem);
+        }
+
+        [HttpPost]
+        public ActionResult<Employee> Post(Employee employee)
+        {            
             if (employee != null)
             {
                 // calculate employee deduction
                 employee.deduction = _repo.CalcDeduction(employee);
                 // store employee on Firebase DB
-                var response = await _repo.AddEmployeeAsync(employee);               
+                _repo.AddEmployee(employee);
+                _repo.SaveChanges();
             }
-            return flag;
+            else
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
+            return CreatedAtRoute(nameof(GetEmployeeById), new { id = employee.Id }, employee);
 
         }        
     }

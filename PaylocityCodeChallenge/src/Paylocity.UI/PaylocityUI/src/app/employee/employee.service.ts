@@ -3,7 +3,7 @@ import { Inject, Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { map, tap } from 'rxjs/operators';
 
-import { Employee } from './../shared/employee';
+import { Employee } from './employee';
 import { Dependent } from '../shared/dependent.model';
 
 @Injectable({providedIn:'root'})
@@ -23,8 +23,8 @@ export class EmployeeService {
   }
 
   getEmployees() {
-    //let url = `${this.baseUrl}api/deduction`;
-    let url = 'https://paylocitycodingchallenge-default-rtdb.firebaseio.com/employee.json';
+    let url = `${this.baseUrl}api/deduction`;
+    //let url = 'https://paylocitycodingchallenge-default-rtdb.firebaseio.com/employee.json';
     return this.http.get<Employee[]>(url);
 
   }

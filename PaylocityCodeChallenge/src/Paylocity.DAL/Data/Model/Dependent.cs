@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Paylocity.DAL.Data.Model
@@ -23,6 +24,7 @@ namespace Paylocity.DAL.Data.Model
         /// <summary>
         /// The Employee related to this Dependent
         /// </summary>
+        [JsonPropertyName("employee")]
         public Employee Employee { get; set; }
         #endregion
     }

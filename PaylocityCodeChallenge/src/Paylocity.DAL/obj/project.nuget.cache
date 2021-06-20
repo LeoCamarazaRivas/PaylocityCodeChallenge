@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "R5L9C+un7//8tFa5ROi+SHbb9cQWddAGnO5tIbmrndRZ1EKjlCgDfLDKOp71BCbq8Nv2FaKVjGlOoWaVhfcyQA==",
+  "dgSpecHash": "5RH38nkXOaavAEGhuBFkUfKAbvcNGhOV7hGXcZk9i5p5iV92u1dxwKRX1lcEwAO4GS841svU6WatI7YKXu76Yw==",
   "success": true,
   "projectFilePath": "E:\\03-Repos\\PaylocityCodeChallenge\\PaylocityCodeChallenge\\src\\Paylocity.DAL\\Paylocity.DAL.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.7\\microsoft.entityframeworkcore.design.5.0.7.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.7\\microsoft.entityframeworkcore.relational.5.0.7.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.7\\microsoft.entityframeworkcore.sqlserver.5.0.7.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.7\\microsoft.entityframeworkcore.tools.5.0.7.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

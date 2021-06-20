@@ -11,8 +11,10 @@ namespace Paylocity.DAL.Repository
 {
     public interface IDeductionRepo
     {
-        Task<HttpResponseMessage> AddEmployeeAsync(Employee employee);
-        Task<HttpResponseMessage> GetEmployeeAsync();
+        bool SaveChanges();
+        IEnumerable<Employee> GetEmployees();
+        void AddEmployee(Employee employee);
+        Employee GetEmployeeById(int id);
         decimal CalcDeduction(Employee employee);
 
     }

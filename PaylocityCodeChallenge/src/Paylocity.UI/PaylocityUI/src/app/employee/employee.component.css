@@ -19,6 +19,10 @@ input.ng-invalid~.invalid-feedback {
   text-align: center;
 }
 
+/*.card {
+    width:32%;
+}*/
+
 /* Accordion Styles */
 .action-buttons {
   padding-bottom: 20px;
@@ -34,7 +38,7 @@ input.ng-invalid~.invalid-feedback {
   align-items: center;
 }
 
-.headers-align .mat-form-field + .mat-form-field {
+.headers-align input {
   margin-left: 8px;
 }
 

@@ -1,37 +1,42 @@
 <div fxLayout="column" fxLayoutAlign="center center" style="margin-top: 5%;">
   <h1>Employee(s) Information</h1>
+  <loading-spinner *ngIf="!employees"></loading-spinner>
   <div *ngIf="!employees">
     <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">
       Please add an employee
     </p>
   </div>
+  <!-- Pagination directive -->
+  <mat-paginator [hidden]="!employees"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[10, 20, 50]"
+                 fxLayout="row" fxLayoutAlign="start center"></mat-paginator>
 
-  <table mat-table [dataSource]="employees" class="table-striped mat-elevation-z8" [hidden]="!employees">
+  <table mat-table [dataSource]="employees" fxFlex="35" class="table-striped mat-elevation-z8" [hidden]="!employees">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.name }}</td>
     </ng-container>
     <!-- Last name Column -->
     <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last name</th>
-      <td mat-cell *matCellDef="let employee">{{ employee.lastName }}</td>
+      <th mat-header-cell *matHeaderCellDef>Last name</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.lastname }}</td>
     </ng-container>
     <!-- Dependents Column -->
     <ng-container matColumnDef="dependents">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dependents</th>
+      <th mat-header-cell *matHeaderCellDef>Dependents</th>
       <td mat-cell *matCellDef="let employee">
         <span *ngIf="employee.dependents !== undefined">
           <span *ngFor="let dep of employee.dependents">
-            {{ dep.firstName + ' ' + dep.lastName + ' ' + '[' + dep.relationship + ']' }}
+            {{ dep.name + ' ' + dep.lastname + ' ' + '[' + dep.relationshipWithEmployee + ']' }}
           </span>
         </span>
-
       </td>
     </ng-container>
     <!-- Deduction Column -->
     <ng-container matColumnDef="deduction">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Deduction</th>
+      <th mat-header-cell *matHeaderCellDef>Deduction</th>
       <td mat-cell *matCellDef="let employee">{{ deductionFormat }}</td>
     </ng-container>
 

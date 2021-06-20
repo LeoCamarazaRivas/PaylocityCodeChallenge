@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Employee } from './../../../shared/employee';
+
 import { EmployeeService } from './../../employee.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { Employee } from '../../employee';
 
 @Component({
   selector: 'app-employee-details',
@@ -19,9 +21,11 @@ export class EmployeeDetailsComponent implements OnInit {
   ];
   // the source for Mat Table
   public employees!: MatTableDataSource<Employee>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   public deductionFormat = '';
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.employeeService.getEmployees().subscribe((r) => {
@@ -36,12 +40,13 @@ export class EmployeeDetailsComponent implements OnInit {
       for (const item of Object.values(r)) {
         console.log(item);
         if (item.deduction !== undefined) {
-          item.deduction = item.deduction / 1000;
+          item.deduction = item.deduction * 100;
           this.deductionFormat = formatter.format(item.deduction);
         }
         tempArray.push(item);
       }
       this.employees = new MatTableDataSource<Employee>(tempArray);
+      this.employees.paginator = this.paginator;
     });
   }
 }
