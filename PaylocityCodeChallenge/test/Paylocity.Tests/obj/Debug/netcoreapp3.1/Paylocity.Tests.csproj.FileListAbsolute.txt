@@ -13,6 +13,7 @@ E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\b
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Paylocity.Tests.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Paylocity.Tests.pdb
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.NodeServices.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.Extensions.dll
@@ -55,6 +56,7 @@ E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\b
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\testhost.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Moq.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
@@ -156,3 +158,5 @@ E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\o
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\obj\Debug\netcoreapp3.1\Paylocity.Tests.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\obj\Debug\netcoreapp3.1\Paylocity.Tests.pdb
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\obj\Debug\netcoreapp3.1\Paylocity.Tests.genruntimeconfig.cache
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\AutoMapper.dll
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\test\Paylocity.Tests\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
