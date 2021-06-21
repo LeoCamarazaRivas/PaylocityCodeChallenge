@@ -1,5 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="start center">
   <div class="card" style="margin-top: 2%;">
+    <app-alert [message]="message" *ngIf="message" (close)="onCloseAlert()"></app-alert> 
     <div class="card-header text-center mat-display-1">Employee Information</div>
     <div class="card-body">
       <mat-accordion class="headers-align" displayMode="default" [multi]="true">
@@ -19,11 +20,11 @@
                   <div class="col-6">
                     <div class="form-group">                      
                       <label for="firstName">Employee Name:</label>
-                      <input type="text" id="firstName" class="form-control w-auto" formControlName="name" required>
+                      <input type="text" id="firstName" class="form-control m-auto" formControlName="name" required>
                       <!-- Employee name validation -->
-                      <div *ngIf="form.hasError('name')" class="invalid-feedback">
+                      <div *ngIf="hasError('name')" class="invalid-feedback">
                         <div *ngIf="form.get('name').errors?.required">
-                          Name is required
+                          Employee's name is required
                         </div>
                       </div>
                     </div>
@@ -32,11 +33,11 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="lastName">Employee Last name:</label>
-                      <input type="text" id="lastName" class="form-control w-auto" formControlName="lastname" required>
+                      <input type="text" id="lastName" class="form-control m-auto" formControlName="lastname" required>
                       <!-- Employee lastName validation -->
-                      <div class="invalid-feedback" *ngIf="form.hasError('lastname')">
+                      <div class="invalid-feedback" *ngIf="hasError('lastname')">
                         <div *ngIf="form.get('lastname').errors?.required">
-                          Name is required
+                          Employee's last name is required
                         </div>
                       </div>
                     </div>
@@ -56,14 +57,12 @@
                       style="margin-top: 10px;">
                       <div class="col-3 mx-4">
                         <label for="dependentName">Dependent Name</label>
-                        <input type="text" id="dependentName" class="form-control w-auto"
-                          formControlName="name" placeholder="Enter dependent name...">
+                        <input type="text" id="dependentName" class="form-control m-auto" formControlName="name">
                       </div>
 
                       <div class="col-3 mx-4">
                         <label for="dependentlastName">Dependent Last name</label>
-                        <input type="text" id="dependentlastName" class="form-control w-auto"
-                          formControlName="lastname" placeholder="Enter dependent lastName...">
+                        <input type="text" id="dependentlastName" class="form-control m-auto" formControlName="lastname">
                       </div>
 
                       <div class="col-3 mx-4">

@@ -29,16 +29,16 @@ namespace Paylocity.DAL.Repository
             // total paycheck, with a based paid = 2000 and 26 paychecks in a year
             decimal paychecksYear = 2000 * 26;
             // cost of benefits for each employee = 1000/paychecksYear
-            decimal costBenefits = (1000 / paychecksYear);
+            decimal costBenefits = (1000 / paychecksYear)*200;            
             // employee dependent benefits
-            decimal costDependentBenefits = (500 / paychecksYear);
+            decimal costDependentBenefits = (500 / paychecksYear)*200;           
             // calculate each dependents if any
             if (employee != null)
             {
                 // if an employee name starts with "A"
                 if (employee.name.ToUpper().StartsWith("A"))
                 {
-                    costBenefits = (costBenefits / 100) * 10;
+                    costBenefits = (10 / 100) * costBenefits;
                 }
                 if (employee.Dependents.Any())
                 {
@@ -46,7 +46,7 @@ namespace Paylocity.DAL.Repository
                     {
                         if (dependent.name.ToUpper().StartsWith("A"))
                         {
-                            costBenefits += (costDependentBenefits / 100) * 10;
+                            costBenefits += (10 / 100) * costDependentBenefits;
                         }
                         else
                         {
@@ -57,14 +57,14 @@ namespace Paylocity.DAL.Repository
                 }
 
             }
+            
             return costBenefits;
         }        
 
         public IEnumerable<Employee> GetEmployees()
         {
-            return _ctx.Employees
-                .Where(e => e.Dependents.Count() > 0)
-                .Include(e => e.Dependents)
+            return _ctx.Employees                
+                .Include(e => e.Dependents)                
                 .ToList();
         }
 

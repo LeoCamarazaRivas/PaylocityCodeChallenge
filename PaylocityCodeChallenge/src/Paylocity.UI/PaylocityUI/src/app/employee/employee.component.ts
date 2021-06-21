@@ -5,7 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { BaseFormComponent } from '../shared/base-form.component';
 import { Dependent } from '../shared/dependent.model';
 import { EmployeeService } from './employee.service';
-import { Employee } from './../shared/employee';
+import { Employee } from '../shared/employee.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,9 +16,10 @@ import { Router } from '@angular/router';
 export class EmployeeComponent extends BaseFormComponent implements OnInit {
 
   // form model
-  form!: FormGroup;
+  form: FormGroup;
   // Employee model
-  employee!: Employee;
+  employee: Employee;
+  message: string = null;
 
   // expand/collapse employee data
   @ViewChild(MatAccordion) accordion!: MatAccordion;
@@ -51,6 +52,7 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
         .subscribe(
           (response) => {
             //this.employeeService.employeeSubject.next(response);
+            this.message += `Employee ${response.name} ${response.lastname} has been successfully added.`;
             this.router.navigate(['/employeeDetails'])
             console.log(response);
           },
@@ -73,6 +75,10 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
   onCancel() {
     this.form.reset();
     (<FormArray>this.form.get('dependents')).clear();
+  }
+
+  onCloseAlert() {
+    this.message = null;
   }
 
   get controls() {

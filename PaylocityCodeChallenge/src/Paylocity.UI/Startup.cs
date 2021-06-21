@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Paylocity.DAL.Data;
 using Paylocity.DAL.Repository;
+using System;
 
 namespace Paylocity.UI
 {
@@ -27,6 +28,8 @@ namespace Paylocity.UI
                     {
                         opions.JsonSerializerOptions.WriteIndented = true;
                     });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddTransient<IDeductionRepo, DeductionRepo>();
             // Add PaylocityDbContext and SQL Server support

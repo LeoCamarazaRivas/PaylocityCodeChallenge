@@ -1,4 +1,4 @@
-import { Dependent } from '../shared/dependent.model';
+import { Dependent } from './dependent.model';
 
 // export interface Employee {
 //   employeeId?: number;

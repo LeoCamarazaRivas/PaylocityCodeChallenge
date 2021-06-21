@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5RH38nkXOaavAEGhuBFkUfKAbvcNGhOV7hGXcZk9i5p5iV92u1dxwKRX1lcEwAO4GS841svU6WatI7YKXu76Yw==",
+  "dgSpecHash": "5OkhH++5hmSnjUYBQKhg2MkuI00Oy7vhXNTXOjAUj0YVp4iltxIRNFZU5fI1EHugajie5QR1yQa4lLfcQhvc9g==",
   "success": true,
   "projectFilePath": "E:\\03-Repos\\PaylocityCodeChallenge\\PaylocityCodeChallenge\\src\\Paylocity.DAL\\Paylocity.DAL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Leo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -63,7 +64,7 @@
     "C:\\Users\\Leo\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Leo\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

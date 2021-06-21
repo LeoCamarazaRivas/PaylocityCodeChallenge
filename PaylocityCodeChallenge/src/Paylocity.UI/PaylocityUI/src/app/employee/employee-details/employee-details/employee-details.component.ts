@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from './../../employee.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { Employee } from '../../employee';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-details',
@@ -20,33 +21,40 @@ export class EmployeeDetailsComponent implements OnInit {
     'deduction',
   ];
   // the source for Mat Table
-  public employees!: MatTableDataSource<Employee>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  public deductionFormat = '';
-
+  public employees: MatTableDataSource<Employee>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;  
+ 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.employeeService.getEmployees().subscribe((r) => {
-      console.log(r);
-      let tempArray: Employee[] = [];
-      const formatter = new Intl.NumberFormat('en-US', {
+    this.employeeService.getEmployees()
+      .pipe(
+        map((employees) => {
+          return employees.map((employee) => {
+            employee.deduction = employee.deduction * 100;
+            return employee;
+          })
+        })
+      ).subscribe((employees) => {
+        console.log(employees);
+        if (employees.length === 0) {
+          this.employees = null;
+        } else {
+          this.employees = new MatTableDataSource<Employee>(employees);
+          this.employees.paginator = this.paginator;
+        }        
+      },
+        // handling errors
+        (error) => {
+          console.log(error);
+        });
+  }  
+}
+
+/*
+ * const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2,
       });
-
-      for (const item of Object.values(r)) {
-        console.log(item);
-        if (item.deduction !== undefined) {
-          item.deduction = item.deduction * 100;
-          this.deductionFormat = formatter.format(item.deduction);
-        }
-        tempArray.push(item);
-      }
-      this.employees = new MatTableDataSource<Employee>(tempArray);
-      this.employees.paginator = this.paginator;
-    });
-  }
-}
+ */

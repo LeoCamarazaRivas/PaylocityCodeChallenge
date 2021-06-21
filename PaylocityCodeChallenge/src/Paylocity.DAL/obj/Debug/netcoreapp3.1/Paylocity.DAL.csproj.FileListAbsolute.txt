@@ -3,9 +3,10 @@ E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\bin\
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\bin\Debug\netcoreapp3.1\Paylocity.DAL.runtimeconfig.dev.json
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\bin\Debug\netcoreapp3.1\Paylocity.DAL.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\bin\Debug\netcoreapp3.1\Paylocity.DAL.pdb
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.csprojAssemblyReference.cache
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.AssemblyInfoInputs.cache
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.AssemblyInfo.cs
-E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.csproj.CoreCompileInputs.cache
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.dll
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.pdb
 E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.genruntimeconfig.cache
+E:\03-Repos\PaylocityCodeChallenge\PaylocityCodeChallenge\src\Paylocity.DAL\obj\Debug\netcoreapp3.1\Paylocity.DAL.csproj.CoreCompileInputs.cache

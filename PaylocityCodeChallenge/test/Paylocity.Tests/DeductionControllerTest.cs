@@ -1,53 +1,74 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Paylocity.DAL.Data;
 using Paylocity.DAL.Data.Model;
 using Paylocity.DAL.Profiles;
 using Paylocity.DAL.Repository;
+using Paylocity.DAL.DTOs;
 using Paylocity.UI.Controllers;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Paylocity.Tests
 {
-    public class DeductionControllerTest
+    public class DeductionControllerTest : IDisposable
     {
         Mock<IDeductionRepo> mockRepo;
+        DeductionProfile realProfile;
+        MapperConfiguration configuration;
+        IMapper mapper;
 
         public DeductionControllerTest()
         {
             mockRepo = new Mock<IDeductionRepo>();
+            realProfile = new DeductionProfile();
+            configuration = new MapperConfiguration(cfg => cfg.AddProfile(realProfile));
+            mapper = new Mapper(configuration);
+        }
+        public void Dispose()
+        {
+            mockRepo = null;
+            realProfile = null;
+            configuration = null;
+            mapper = null;
         }
 
         [Fact]
         public void GetEmployees_Returns200OK_WhenDBIsNotEmpty()
         {
             // Arrange            
-            mockRepo.Setup(repo => repo.GetEmployees()).Returns(GetEmployees(0));
-
-            var realProfile = new DeductionProfile();
-            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(realProfile));
-            IMapper mapper = new Mapper(configuration);
-
+            mockRepo.Setup(repo => repo.GetEmployees()).Returns(GetEmployees(1));
             var controller = new DeductionController(mockRepo.Object, mapper);
 
+            // Act
+            var result = controller.GetEmployees();
+
+            // Assert       
+            Assert.IsType<OkObjectResult>(result.Result);
         }
 
         [Fact]
-        public void StoreEmployee_ReturnOneEmployee_WhenFireBaseDBIsEmpty()
+        public void Post_ReturnOneEmployee_WhenDBIsEmpty()
         {
             // Arrange
+            EmployeeCreateDTO employeeCreateDTO =
+                new EmployeeCreateDTO
+                {
+                    name = "Ragnar",
+                    lastname = "Lothbrok",
+                    Dependents = new List<DependentDTO> { new DependentDTO { name = "Bjorn", lastname = "Lothbrok", relationshipWithEmployee = "child" } },
+                    deduction = 0
+                };
+            var employee = mapper.Map<Employee>(employeeCreateDTO);
+            mockRepo.Setup(repo => repo.AddEmployee(employee));
+            var controller = new DeductionController(mockRepo.Object, mapper);
 
             // Act
-
+            var result = controller.Post(new EmployeeCreateDTO { });
 
             // Assert
-
+            Assert.IsType<ActionResult<EmployeeReadDTO>>(result);
         }
 
         private List<Employee> GetEmployees(int num)
@@ -55,7 +76,7 @@ namespace Paylocity.Tests
             var employees = new List<Employee>();
             if (num > 0)
             {
-                employees.Add(                   
+                employees.Add(
                     new Employee
                     {
                         Id = 3,
