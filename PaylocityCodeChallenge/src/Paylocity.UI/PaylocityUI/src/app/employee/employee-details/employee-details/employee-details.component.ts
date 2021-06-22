@@ -50,11 +50,3 @@ export class EmployeeDetailsComponent implements OnInit {
         });
   }  
 }
-
-/*
- * const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2,
-      });
- */
