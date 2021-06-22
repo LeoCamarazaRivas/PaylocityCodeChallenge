@@ -14,6 +14,7 @@ namespace Paylocity.DAL.Repository
         bool SaveChanges();
         IEnumerable<Employee> GetEmployees();
         void AddEmployee(Employee employee);
+        void UpdateEmployee(int id, Employee employee);
         Employee GetEmployeeById(int id);
         decimal CalcDeduction(Employee employee);
 

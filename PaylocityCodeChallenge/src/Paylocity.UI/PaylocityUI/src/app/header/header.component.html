@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
   <div fxLayoutGap="column">
     <mat-toolbar color="primary">
       <button mat-icon-button>
@@ -13,4 +13,31 @@
       <span style="cursor: pointer;" class="mx-2" routerLink="/employee" routerLinkActive="active">Add Employee</span>
     </mat-toolbar>
   </div>
-</div>
+</div>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <mat-icon class="mat-18">developer_mode</mat-icon>
+    <a class="navbar-brand" routerLink="/home">Paylocity Coding Challenge</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employeeDetails" routerLinkActive="active">
+            <i class="fas fa-list-alt"></i>
+            List Employees
+          </a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee" routerLinkActive="active">            
+            <i class="fas fa-address-book"></i>
+            Add Employee
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>  
+</nav>

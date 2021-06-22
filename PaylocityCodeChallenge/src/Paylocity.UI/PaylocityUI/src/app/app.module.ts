@@ -38,4 +38,4 @@ import { AlertComponent } from './shared/alert/alert.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

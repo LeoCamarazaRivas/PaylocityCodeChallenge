@@ -1,98 +1,85 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-  <div class="card" style="margin-top: 2%;">
-    <app-alert [message]="message" *ngIf="message" (close)="onCloseAlert()"></app-alert> 
-    <div class="card-header text-center mat-display-1">Employee Information</div>
-    <div class="card-body">
-      <mat-accordion class="headers-align" displayMode="default" [multi]="true">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title>Employee Data</mat-panel-title> -->
-            <mat-panel-description class="text-center">
-              Please enter the Employee name, last name, and (his/her) dependents.
-              <!--<mat-icon>account_circle</mat-icon>-->
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-
+<div  fxLayout="row" fxLayoutAlign="center start">  
+    <div class="card" style="margin-top: 2%;">
+      <app-alert [message]="message" *ngIf="message" (close)="onCloseAlert()"></app-alert>
+      <div class="card-header text-center mat-display-1">{{ title }}</div>
+      <div class="card-title text-center">
+        <p> Please enter the Employee name, last name, and (his/her) dependents.</p>
+      </div>
+      <div class="card-body">
+        <div [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row">
-            <div class="col-xs-12 gap-3">
-              <div [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">                      
-                      <label for="firstName">Employee Name:</label>
-                      <input type="text" id="firstName" class="form-control m-auto" formControlName="name" required>
-                      <!-- Employee name validation -->
-                      <div *ngIf="hasError('name')" class="invalid-feedback">
-                        <div *ngIf="form.get('name').errors?.required">
-                          Employee's name is required
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="lastName">Employee Last name:</label>
-                      <input type="text" id="lastName" class="form-control m-auto" formControlName="lastname" required>
-                      <!-- Employee lastName validation -->
-                      <div class="invalid-feedback" *ngIf="hasError('lastname')">
-                        <div *ngIf="form.get('lastname').errors?.required">
-                          Employee's last name is required
-                        </div>
-                      </div>
-                    </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="firstName">Employee Name:</label>
+                <input type="text" id="firstName" class="form-control m-auto" formControlName="name" required>
+                <!-- Employee name validation -->
+                <div *ngIf="hasError('name')" class="invalid-feedback">
+                  <div *ngIf="form.get('name').errors?.required">
+                    Employee's name is required
                   </div>
                 </div>
-                <br>
-                <!-- Dependents -->
-                <div class="row align-items-center" style="margin-top: 2.5%;margin-left: 20%;">
-                  <div class="col">
-                    <button class="btn btn-success custom-heading" type="button" (click)="onAddDependents()">Add dependent(s)</button>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="lastName">Employee Last name:</label>
+                <input type="text" id="lastName" class="form-control m-auto" formControlName="lastname" required>
+                <!-- Employee lastName validation -->
+                <div class="invalid-feedback" *ngIf="hasError('lastname')">
+                  <div *ngIf="form.get('lastname').errors?.required">
+                    Employee's last name is required
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-12 my-2" formArrayName="dependents">
-                    <div class="row" *ngFor="let dependentCtr of controls; let i = index" [formGroupName]="i"
-                      style="margin-top: 10px;">
-                      <div class="col-3 mx-4">
-                        <label for="dependentName">Dependent Name</label>
-                        <input type="text" id="dependentName" class="form-control m-auto" formControlName="name">
-                      </div>
-
-                      <div class="col-3 mx-4">
-                        <label for="dependentlastName">Dependent Last name</label>
-                        <input type="text" id="dependentlastName" class="form-control m-auto" formControlName="lastname">
-                      </div>
-
-                      <div class="col-3 mx-4">
-                        <label for="dependentRelationship">Dependent Relationship</label>
-                        <!-- <input type="text" id="dependentRelationship" class="form-control w-auto"
-                          formControlName="dependentRelationship" placeholder="Enter dependent lastName..."> -->
-                          <select formControlName="relationshipWithEmployee" id="dependentRelationship" class="form-select">
-                            <option value="child">Child</option>
-                            <option value="husband">Husband</option>
-                            <option value="wife">Wife</option>
-                          </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group commands float-end">
-                  <button type="submit" (click)="onSubmit()" class="btn btn-success" [disabled]="form.invalid">
-                    Calculate
-                  </button>
-                  <button type="button" class="btn" (click)="onCancel()">
-                    Cancel
-                  </button>
-                </div>
-
               </div>
             </div>
           </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+          <br>
+          <!-- Dependents -->
+          <div class="row justify-content-end">
+            <div class="col">
+              <button class="btn btn-success custom-heading" type="button"
+                      (click)="onAddDependents()">Add more dependent(s)</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12 my-2" formArrayName="dependents">
+              <div class="row" *ngFor="let dependentCtr of controls; let i = index" [formGroupName]="i"
+                   style="margin-top: 10px;">
+                <div class="col-3 mx-4">
+                  <label for="dependentName">Dependent Name</label>
+                  <input type="text" id="dependentName" class="form-control m-auto" formControlName="name">                  
+                </div>
+
+                <div class="col-3 mx-4">
+                  <label for="dependentlastName">Dependent Last name</label>
+                  <input type="text" id="dependentlastName" class="form-control m-auto" formControlName="lastname">
+                </div>
+
+                <div class="col-3 mx-4">
+                  <label for="dependentRelationship">Dependent Relationship</label>                  
+                  <select formControlName="relationshipWithEmployee" id="dependentRelationship" class="form-select">
+                    <option value="child">Child</option>
+                    <option value="husband">Husband</option>
+                    <option value="wife">Wife</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group commands float-end">
+            <button type="submit" (click)="onSubmit()" class="btn btn-success" [disabled]="form.invalid">
+              Calculate
+            </button>
+            <button type="button" class="btn" (click)="onCancel()">
+              Cancel
+            </button>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
+  
 </div>

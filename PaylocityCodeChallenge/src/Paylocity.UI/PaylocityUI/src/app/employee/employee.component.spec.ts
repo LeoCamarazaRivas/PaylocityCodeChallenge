@@ -42,7 +42,7 @@ describe('EmployeeDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should display Employee(s) Information title', () => {
+  it('should display Employee Information title', () => {
     let employeeTitle: HTMLElement = fixture.nativeElement;
     const h1 = employeeTitle.querySelector('h1');
     expect(h1?.textContent).toEqual('Employee(s) Information');    

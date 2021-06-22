@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { map, tap } from 'rxjs/operators';
@@ -8,9 +8,7 @@ import { Dependent } from '../shared/dependent.model';
 
 @Injectable({providedIn:'root'})
 export class EmployeeService {
-
-  public employeeSubject = new Subject<Employee[]>();
-  public employees!: Employee[];
+  public employees: Employee[];
 
   constructor(
     private http: HttpClient,
@@ -22,16 +20,21 @@ export class EmployeeService {
     return this.http.post<Employee>(url, employee);
   }
 
+  put<Employee>(id: number, employee: Employee): Observable<Employee> {
+    let url = `${this.baseUrl}api/deduction/${id}`;
+    return this.http.put<Employee>(url, employee);
+  }
+
+  getEmployeeById(id: number) {
+    let url = `${this.baseUrl}api/deduction/${id}`;
+    return this.http.get<Employee>(url);
+  }
+
   getEmployees() {
     let url = `${this.baseUrl}api/deduction`;
     //let url = 'https://paylocitycodingchallenge-default-rtdb.firebaseio.com/employee.json';
     return this.http.get<Employee[]>(url);
 
   }
-
-  setEmployee(employee: Employee[]) {
-    this.employees = employee;
-    this.employeeSubject.next(this.employees.slice());
-  }
-
+  
 }

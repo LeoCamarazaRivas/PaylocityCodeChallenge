@@ -26,12 +26,12 @@ namespace Paylocity.DAL.Repository
             //NumberFormatInfo fixedTwo = new NumberFormatInfo();
             //fixedTwo.NumberDecimalDigits = 2;
 
-            // total paycheck, with a based paid = 2000 and 26 paychecks in a year
-            decimal paychecksYear = 2000 * 26;
+            // paychecksYear = 2000(based paid) * 26(paychecks in a year)
+            decimal paychecksYear = 52000;
             // cost of benefits for each employee = 1000/paychecksYear
-            decimal costBenefits = (1000 / paychecksYear)*200;            
+            decimal costBenefits = (1000 * 100) / paychecksYear;            
             // employee dependent benefits
-            decimal costDependentBenefits = (500 / paychecksYear)*200;           
+            decimal costDependentBenefits = (500 * 100) / paychecksYear;           
             // calculate each dependents if any
             if (employee != null)
             {
@@ -70,7 +70,7 @@ namespace Paylocity.DAL.Repository
 
         public Employee GetEmployeeById(int id)
         {
-            return _ctx.Employees.FirstOrDefault(e => e.Id == id);
+            return _ctx.Employees.Include(e => e.Dependents).FirstOrDefault(e => e.Id == id);
         }
 
         public void AddEmployee(Employee employee)
@@ -82,22 +82,33 @@ namespace Paylocity.DAL.Repository
             _ctx.Employees.Add(employee);
         }
 
+        public void UpdateEmployee(int id, Employee employee)
+        {
+            _ctx.Entry(employee).State = EntityState.Modified;
+            try
+            {
+                SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeExists(id))
+                {
+                    throw new ArgumentException($"Employee {employee.name} not found");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
         public bool SaveChanges()
         {
             return (_ctx.SaveChanges() > 0);
         }
 
-        #region Old Code Remove before upload to GitHub
-        public async Task<HttpResponseMessage> GetEmployeeAsync()
-        {
-            return await client.GetAsync($"https://paylocitycodingchallenge-default-rtdb.firebaseio.com/employee.json");
-        }
+        private bool EmployeeExists(int id) => _ctx.Employees.Any(e => e.Id == id);
 
-        public async Task<HttpResponseMessage> AddEmployeeAsync(Employee employee)
-        {
-            var jsonData = new JsonHttpContent(employee);
-            return await client.PostAsync($"https://paylocitycodingchallenge-default-rtdb.firebaseio.com/employee.json", jsonData);
-        }
-        #endregion
+
     }
 }

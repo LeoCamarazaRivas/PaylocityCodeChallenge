@@ -11,6 +11,7 @@ namespace Paylocity.DAL.Profiles
             CreateMap<Employee, EmployeeReadDTO>();
             CreateMap<Dependent, DependentDTO>();
             CreateMap<EmployeeCreateDTO, Employee>();
+            CreateMap<EmployeeUpdateDTOs, Employee>();
             CreateMap<DependentDTO, Dependent>();
         }
     }
