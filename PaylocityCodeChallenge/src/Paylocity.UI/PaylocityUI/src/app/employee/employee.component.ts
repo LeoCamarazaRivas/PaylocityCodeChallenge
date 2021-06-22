@@ -25,8 +25,8 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
   // the employee object id, as fetched from the active route:
   // It's NULL when we are adding a new employee,
   // and not NULL when we are editing an existing one.
-  id?: number;
-  message: string = null;
+  id?: number; 
+  titleBtnDepen: string = '';
 
   // expand/collapse employee data
   @ViewChild(MatAccordion) accordion!: MatAccordion;
@@ -40,14 +40,12 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleBtnDepen = 'Add dependent(s)';
+   
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
-      dependents: new FormArray([new FormGroup({
-        name: new FormControl(''),
-        lastname: new FormControl(''),
-        relationshipWithEmployee: new FormControl('')
-      })])
+      dependents: new FormArray([])
     });
     this.loadData();
   }
@@ -61,14 +59,18 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
           console.log(employee);
           this.employee = employee;
           this.title = `Edit Employee - ${this.employee.name}`;
-          this.form.patchValue({ name: this.employee.name, lastname: this.employee.lastname});         
-          this.employee.dependents.forEach(depe => {
-            (<FormArray>this.form.get('dependents')).push(new FormGroup({
-              name: new FormControl(depe.name),
-              lastname: new FormControl(depe.lastname),
-              relationshipWithEmployee: new FormControl(depe.relationshipWithEmployee),
-            }))
-          })
+          this.form.patchValue({ name: this.employee.name, lastname: this.employee.lastname });
+          if (this.employee.dependents.length > 0) {
+            this.employee.dependents.forEach(depe => {
+              (<FormArray>this.form.get('dependents')).push(new FormGroup({
+                name: new FormControl(depe.name),
+                lastname: new FormControl(depe.lastname),
+                relationshipWithEmployee: new FormControl(depe.relationshipWithEmployee),
+              }))
+            });
+
+            this.titleBtnDepen = 'Add more dependent(s)';
+          }          
           
         },
           // handling errors
@@ -97,7 +99,7 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
         .subscribe(
           (employee) => {
             confirm(`Employee ${employee.name} has been updated`);
-            // navigate to Employee Details
+            // navigate to Employee Details           
             this.router.navigate(['/employeeDetails']);
           },
           // handling errors
@@ -106,9 +108,7 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
       // Add New Employee
       this.employeeService.post<Employee>(employee)
         .subscribe(
-          (response) => {
-            //this.employeeService.employeeSubject.next(response);
-            this.message += `Employee ${response.name} ${response.lastname} has been successfully added.`;
+          (response) => {                      
             this.router.navigate(['/employeeDetails'])
             console.log(response);
           },
@@ -127,17 +127,15 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
         lastname: new FormControl(''),
         relationshipWithEmployee: new FormControl(''),
       })
-    );    
+    );
+    this.titleBtnDepen = 'Add more dependent(s)';
   }
 
   onCancel() {
     this.form.reset();
     (<FormArray>this.form.get('dependents')).clear();
     this.router.navigate(['/employee']);
-  }
-
-  onCloseAlert() {
-    this.message = null;
+    this.titleBtnDepen = 'Add dependent(s)';
   }
 
   get controls() {
