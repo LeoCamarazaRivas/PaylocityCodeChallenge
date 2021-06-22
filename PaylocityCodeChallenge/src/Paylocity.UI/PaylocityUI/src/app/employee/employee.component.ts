@@ -61,8 +61,14 @@ export class EmployeeComponent extends BaseFormComponent implements OnInit {
           console.log(employee);
           this.employee = employee;
           this.title = `Edit Employee - ${this.employee.name}`;
-          this.form.patchValue(this.employee);          
-          (<FormArray>this.form.get('dependents')).patchValue(this.employee.dependents);
+          this.form.patchValue({ name: this.employee.name, lastname: this.employee.lastname});         
+          this.employee.dependents.forEach(depe => {
+            (<FormArray>this.form.get('dependents')).push(new FormGroup({
+              name: new FormControl(depe.name),
+              lastname: new FormControl(depe.lastname),
+              relationshipWithEmployee: new FormControl(depe.relationshipWithEmployee),
+            }))
+          })
           
         },
           // handling errors
