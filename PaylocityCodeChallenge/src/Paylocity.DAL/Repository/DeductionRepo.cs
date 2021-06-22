@@ -85,8 +85,19 @@ namespace Paylocity.DAL.Repository
         public void UpdateEmployee(int id, Employee employee)
         {
             _ctx.Entry(employee).State = EntityState.Modified;
+            var putEmployee =
+                    _ctx.Employees
+                    .Where(e => e.Id == employee.Id)
+                    .Include(e => e.Dependents)
+                    .FirstOrDefault();
             try
             {
+                if (putEmployee != null)
+                {
+                    putEmployee.name = employee.name;
+                    putEmployee.lastname = employee.lastname;                   
+                    putEmployee.Dependents = employee.Dependents;
+                }
                 SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
